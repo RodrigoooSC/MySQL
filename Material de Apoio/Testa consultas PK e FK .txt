@@ -1,0 +1,48 @@
+SELECT A.NOME_DO_PRODUTO FROM tabela_de_produtos A;
+
+SELECT A.NOME_DO_PRODUTO, C.QUANTIDADE FROM tabela_de_produtos A INNER JOIN itens_notas_fiscais C ON A.codigo_do_produto = C.codigo_do_produto;
+
+SELECT A.NOME_DO_PRODUTO, YEAR(B.DATA_VENDA) AS ANO, C.QUANTIDADE FROM tabela_de_produtos A INNER JOIN itens_notas_fiscais C ON A.codigo_do_produto = C.codigo_do_produto INNER JOIN notas_fiscais B ON C.NUMERO = B.NUMERO; 
+
+SELECT A.NOME_DO_PRODUTO, YEAR(B.DATA_VENDA) AS ANO, SUM(C.QUANTIDADE) AS QUANTIDADE FROM tabela_de_produtos A INNER JOIN itens_notas_fiscais C ON A.codigo_do_produto = C.codigo_do_produto INNER JOIN notas_fiscais B ON C.NUMERO = B.NUMERO GROUP BY A.NOME_DO_PRODUTO, YEAR(B.DATA_VENDA) ORDER BY A.NOME_DO_PRODUTO, YEAR(B.DATA_VENDA);
+
+
+CREATE TABLE `itens_notas_fiscais2` (
+  `NUMERO` int(11) NOT NULL,
+  `CODIGO_DO_PRODUTO` varchar(10) NOT NULL,
+  `QUANTIDADE` int(11) NOT NULL,
+  `PRECO` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `notas_fiscais2` (
+  `CPF` varchar(11) NOT NULL,
+  `MATRICULA` varchar(5) NOT NULL,
+  `DATA_VENDA` date DEFAULT NULL,
+  `NUMERO` int(11) NOT NULL,
+  `IMPOSTO` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `tabela_de_produtos2` (
+  `CODIGO_DO_PRODUTO` varchar(10) NOT NULL,
+  `NOME_DO_PRODUTO` varchar(50) DEFAULT NULL,
+  `EMBALAGEM` varchar(20) DEFAULT NULL,
+  `TAMANHO` varchar(10) DEFAULT NULL,
+  `SABOR` varchar(20) DEFAULT NULL,
+  `PRECO_DE_LISTA` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+
+INSERT INTO itens_notas_fiscais2 SELECT * FROM itens_notas_fiscais;
+
+INSERT INTO notas_fiscais2 SELECT * FROM notas_fiscais;
+
+INSERT INTO tabela_de_produtos2 SELECT * FROM tabela_de_produtos;
+
+
+-- 76517.94 (Original com PK e FK)
+-- 769497.31 (Sem PK e FK).
+
+SELECT A.NOME_DO_PRODUTO, C.QUANTIDADE 
+FROM tabela_de_produtos2 A INNER JOIN itens_notas_fiscais2 C 
+ON A.codigo_do_produto = C.codigo_do_produto;

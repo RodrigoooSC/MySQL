@@ -1,0 +1,170 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 0, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+# Time: 2022-09-20T15:13:02.674749Z
+# User@Host: root[root] @ localhost [::1]  Id:     9
+# Query_time: 20.396890  Lock_time: 0.000010 Rows_sent: 12  Rows_examined: 426771
+use sucos_vendas;
+SET timestamp=1663686762;
+select VENDA_SABOR.SABOR, VENDA_SABOR.ANO, VENDA_SABOR.QUANTIDADE,
+    (VENDA_SABOR.QUANTIDADE/VENDA_TOTAL.QUANTIDADE) * 100 as PARTICIPACAO from
+		(select TP.SABOR, year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by TP.SABOR, year(NF.DATA_VENDA)) as VENDA_SABOR
+    inner join
+		(select year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by year(NF.DATA_VENDA)) as VENDA_TOTAL
+    on VENDA_SABOR.ANO = VENDA_TOTAL.ANO
+LIMIT 0, 1000;
+# Time: 2022-09-20T15:14:04.583441Z
+# User@Host: root[root] @ localhost [::1]  Id:     9
+# Query_time: 20.714912  Lock_time: 0.000006 Rows_sent: 12  Rows_examined: 426783
+SET timestamp=1663686823;
+select VENDA_SABOR.SABOR, VENDA_SABOR.ANO, VENDA_SABOR.QUANTIDADE,
+    (VENDA_SABOR.QUANTIDADE/VENDA_TOTAL.QUANTIDADE) * 100 as PARTICIPACAO from
+		(select TP.SABOR, year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by TP.SABOR, year(NF.DATA_VENDA)) as VENDA_SABOR
+    inner join
+		(select year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by year(NF.DATA_VENDA)) as VENDA_TOTAL
+    on VENDA_SABOR.ANO = VENDA_TOTAL.ANO
+    order by 4 desc
+LIMIT 0, 1000;
+# Time: 2022-09-20T16:23:43.552748Z
+# User@Host: root[root] @ localhost [::1]  Id:     9
+# Query_time: 18.072389  Lock_time: 0.000007 Rows_sent: 12  Rows_examined: 426783
+SET timestamp=1663691005;
+select VENDA_TAMANHO.TAMANHO, VENDA_TAMANHO.ANO, VENDA_TAMANHO.QUANTIDADE,
+    round((VENDA_TAMANHO.QUANTIDADE/VENDA_TOTAL.QUANTIDADE) * 100,2) as PARTICIPACAO from
+		(select TP.TAMANHO, year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by TP.SABOR, year(NF.DATA_VENDA)) as VENDA_TAMANHO
+    inner join
+		(select year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
+		from tabela_de_produtos as TP
+		inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
+		inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO
+		where  year(NF.DATA_VENDA) = 2016
+		group by year(NF.DATA_VENDA)) as VENDA_TOTAL
+    on VENDA_TAMANHO.ANO = VENDA_TOTAL.ANO
+    order by 4 desc
+LIMIT 0, 1000;
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe, Version: 8.0.28 (MySQL Community Server - GPL). started with:
+TCP Port: 3306, Named Pipe: MySQL
+Time                 Id Command    Argument
+# Time: 2022-10-14T18:54:12.409634Z
+# User@Host: root[root] @ localhost [::1]  Id:    12
+# Query_time: 25.925019  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 4844431
+use sucos_vendas;
+SET timestamp=1665773652;
+call Inserir_Venda('20221010', 56, 100);
+# Time: 2022-10-14T19:00:00.741406Z
+# User@Host: root[root] @ localhost [::1]  Id:    12
+# Query_time: 36.417451  Lock_time: 0.000000 Rows_sent: 0  Rows_examined: 7267555
+SET timestamp=1665774000;
+call Inserir_Venda('20221009', 46, 100);

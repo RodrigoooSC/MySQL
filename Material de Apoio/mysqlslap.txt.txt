@@ -1,0 +1,22 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin>
+C:\Program Files\MySQL\MySQL Server 8.0\bin>MYSQLSLAP -uroot -p --concurrency=100 --iterations=10 --create-schema=sucos_vendas --query="SELECT * FROM NOTAS_FISCAIS WHERE DATA_VENDA = '20170101'";
+Enter password: ****
+Benchmark
+        Average number of seconds to run all queries: 0.548 seconds
+        Minimum number of seconds to run all queries: 0.203 seconds
+        Maximum number of seconds to run all queries: 1.281 seconds
+        Number of clients running queries: 100
+        Average number of queries per client: 1
+
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>MYSQLSLAP -uroot -p --concurrency=100 --iterations=10 --create-schema=sucos_vendas --query="SELECT * FROM NOTAS_FISCAIS2 WHERE DATA_VENDA = '20170101'";
+Enter password: ****
+Benchmark
+        Average number of seconds to run all queries: 2.628 seconds
+        Minimum number of seconds to run all queries: 2.312 seconds
+        Maximum number of seconds to run all queries: 3.422 seconds
+        Number of clients running queries: 100
+        Average number of queries per client: 1
+
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>

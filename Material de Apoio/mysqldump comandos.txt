@@ -1,0 +1,13 @@
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -uroot -p --databases sucos_vendas > c:\mysqladmin\sucos_vendas_full.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -uroot -p --databases sucos_vendas --tables notas_fiscais > c:\mysqladmin\sucos_vendas_tab_notas_fiscais.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -uroot -p --databases sucos_vendas --ignore-table sucos_vendas.notas_fiscais > c:\mysqladmin\sucos_vendas_ig_tab_notas_fiscias.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>mysqldump -uroot -p --databases sucos_vendas --no-create-db --no-create-info --complete-insert > c:\mysqladmin\sucos_vendas_somente_inserts.sql
+Enter password: ****
+
+C:\Program Files\MySQL\MySQL Server 8.0\bin>
