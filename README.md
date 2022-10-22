@@ -1,4 +1,4 @@
-# MySQL - SQL com MySQL Server da Oracle.
+# SQL com MySQL Server da Oracle.
 
 
 Fala pessoal tudo bem? 🖖🏽 Esse projeto foi desenvolvido na formação <a href="https://cursos.alura.com.br/formacao-oracle-mysql">SQL com MySQL Server da Oracle</a> da plataforma <a hfer="https://www.alura.com.br/">Alura</a> com a orientação do professor <a href="https://www.linkedin.com/in/victorino-vila-1a160/">Victorino Vila</a>.
