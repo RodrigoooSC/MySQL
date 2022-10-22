@@ -30,7 +30,7 @@ Durante o desenvolvimento da formação passamos por três grandes partes sendo 
     - Implementando STORED PROCEDURES
     - Usando CURSOR para busca de dados
     - Controle de fluxo de STORED PROCEDURES
-    - Tratrando erros
+    - Tratando erros
     - Aplicando STORED PROCEDURES a TRIGGERS
 
 - Administrando o MySQL Server
