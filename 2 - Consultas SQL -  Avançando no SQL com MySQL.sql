@@ -287,7 +287,7 @@ end order by EMBALAGEM;
     tabela_de_clientes.BAIRRO,
     tabela_de_clientes.NOME    
     from tabela_de_vendedores
-    full join tabela_de_clientes -- MySql nõa permite full join
+    full join tabela_de_clientes -- MySql não permite full join
     on tabela_de_vendedores.BAIRRO = tabela_de_clientes.BAIRRO;
     
     -- Cross Join
@@ -597,21 +597,21 @@ end order by EMBALAGEM;
     
     /*Nesta aula construímos um relatório que apresentou os clientes que tiveram vendas inválidas. Complemente este relatório listando somente os que tiveram vendas inválidas e calculando a diferença entre o limite de venda máximo e o realizado, em percentuais.
 
-	Dica:
+    Dica:
 
-	Capture a SQL final da aula.
+    Capture a SQL final da aula.
 
-	Filtre somente as linhas onde
+    Filtre somente as linhas onde
 
-	(X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0
+    (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) < 0
 
-	Liste a coluna de X.QUANTIDADE_LIMITE
+    Liste a coluna de X.QUANTIDADE_LIMITE
 
-	Crie uma nova coluna fazendo a fórmula:
+    Crie uma nova coluna fazendo a fórmula:
 
-	(1 - (X.QUANTIDADE_LIMITE/X.QUANTIDADE_VENDAS)) * 100 */
-		
-	select X.CPF, X.NOME, X.MES_ANO, X.QUANTIDADE_VENDAS, X.QUANTIDADE_LIMITE,    
+    (1 - (X.QUANTIDADE_LIMITE/X.QUANTIDADE_VENDAS)) * 100 */
+      
+    select X.CPF, X.NOME, X.MES_ANO, X.QUANTIDADE_VENDAS, X.QUANTIDADE_LIMITE,    
     case when (X.QUANTIDADE_LIMITE - X.QUANTIDADE_VENDAS) <0 
 		then 'Inválida' 
 		else 'Válida' 
@@ -640,7 +640,7 @@ end order by EMBALAGEM;
     inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
     inner join notas_fiscais as NF on NF.NUMERO = INF.NUMERO;
     
-	-- Quantidade por sabor vendida no ano de 2016.
+	  -- Quantidade por sabor vendida no ano de 2016.
     select TP.SABOR, year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
     from tabela_de_produtos as TP
     inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO
@@ -659,7 +659,7 @@ end order by EMBALAGEM;
    
     
     -- Quantidade por sabor,total e porcentagem vendida no ano de 2016.
-	select * from
+	  select * from
     (select TP.SABOR, year(NF.DATA_VENDA) as ANO, sum(INF.QUANTIDADE) as QUANTIDADE
     from tabela_de_produtos as TP
     inner join itens_notas_fiscais as INF on TP.CODIGO_DO_PRODUTO = INF.CODIGO_DO_PRODUTO

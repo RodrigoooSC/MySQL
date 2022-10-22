@@ -236,7 +236,7 @@ alter table itens_notas rename itens_notas;
   `EMBALAGEM` varchar(50) DEFAULT NULL,
   `PRECO_LISTA` float DEFAULT NULL,
   PRIMARY KEY (`CODIGO`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
   select * from produtos_2;
   
